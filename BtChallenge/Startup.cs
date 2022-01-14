@@ -55,6 +55,12 @@ namespace BtApp
                 app.UseHsts();
             }
 
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<BTDbContext>();
+                context.Database.Migrate();
+            }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
