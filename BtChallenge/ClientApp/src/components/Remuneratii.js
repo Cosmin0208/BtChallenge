@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import Toast from 'react-bootstrap/Toast';
+import { toast } from 'react-toastify';
 
 export class Remuneratii extends Component {
     static displayName = Remuneratii.name;
@@ -9,8 +9,6 @@ export class Remuneratii extends Component {
 
         this.state = {
             loading: true,
-            showToast: false,
-            serverMsg: "",
             modalTitle: "",
             remuneratii: [],
             produse: [],
@@ -21,10 +19,6 @@ export class Remuneratii extends Component {
             luna: 0,
             remuneratie: 0
         }
-    }
-
-    setShowToast(show) {
-        this.setState({ showToast: show });
     }
 
     componentDidMount() {
@@ -50,12 +44,6 @@ export class Remuneratii extends Component {
     render() {
         return (
             <div>
-                <Toast bg="secondary" onClose={() => this.setShowToast(false)} show={this.state.showToast} position="top-center" delay={3000} autohide>
-                    <Toast.Header>
-                        <strong className="me-auto">Notificare</strong>
-                    </Toast.Header>
-                    <Toast.Body>{this.state.serverMsg}</Toast.Body>
-                </Toast>
                 <h4 id="tabelLabel" >Remuneratii</h4>
                 <button type="button" className="btn btn-primary m-2 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => this.addClick()}>
                     Adauga
@@ -219,10 +207,26 @@ export class Remuneratii extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                this.setState({ showToast: true, serverMsg: result });
+                toast.success(result, {
+                    position: "top-right",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
                 this.componentDidMount();
             }, (error) => {
-                this.setState({ showToast: true, serverMsg: error });
+                toast.error(error, {
+                    position: "top-right",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             })
 
         
@@ -245,10 +249,26 @@ export class Remuneratii extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                this.setState({ showToast: true, serverMsg: result });
+                toast.success(result, {
+                    position: "top-right",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
                 this.componentDidMount();
             }, (error) => {
-                this.setState({ showToast: true, serverMsg: error });
+                toast.error(error, {
+                    position: "top-right",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             })
        
     }
@@ -264,10 +284,26 @@ export class Remuneratii extends Component {
             })
                 .then(res => res.json())
                 .then((result) => {
-                    this.setState({ showToast: true, serverMsg: result });
+                    toast.success(result, {
+                        position: "top-right",
+                        autoClose: 2500,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
                     this.componentDidMount();
                 }, (error) => {
-                    this.setState({ showToast: true, serverMsg: error });
+                    toast.error(error, {
+                        position: "top-right",
+                        autoClose: 2500,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
                 })
         }
     }
